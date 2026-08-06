@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT. SBS — Sukses Bersama Sendy | Desain Interior, Arsitektur &amp; Konstruksi</title>
+<meta name="description" content="PT. Sukses Bersama Sendy (SBS) — desain arsitektur 2D/3D, interior, bangunan baru, renovasi, dan landscape taman di Bekasi, Jawa Barat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#eae7e0;
+    --ink-soft:rgba(234,231,224,.6);
+    --stone:#121110;
+    --stone-deep:#090908;
+    --paper:#1c1a17;
+    --walnut:#84532f;
+    --walnut-deep:#432c1a;
+    --brass:#6b5636;
+    --brass-light:#c3a06e;
+    --moss:#313c2b;
+    --line:rgba(234,231,224,.08);
+    --line-strong:rgba(234,231,224,.18);
+    --shadow:0 24px 60px -30px rgba(0,0,0,.6);
+    --radius:2px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    background:var(--stone);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;line-height:1.08;}
+  .container{width:min(1180px, 92%);margin-inline:auto;}
+
+  /* ---------- Eyebrow / dimension label ---------- */
+  .eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:34px;height:1px;background:var(--line-strong);
+    position:relative;
+  }
+  .eyebrow .tick{position:relative;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:14.5px;
+    letter-spacing:.01em;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-solid{background:var(--ink);color:var(--paper);}
+  .btn-solid:hover{background:var(--walnut);color:var(--ink);border-color:var(--walnut);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+  .btn-brass{background:var(--brass);color:var(--ink);border-color:var(--brass);}
+  .btn-brass:hover{background:var(--ink);color:var(--stone-deep);border-color:var(--ink);transform:translateY(-2px);}
+  .btn svg{width:16px;height:16px;flex:none;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;
+    transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  header.scrolled{
+    padding:13px 0;
+    background:rgba(18,17,16,.88);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);
+  }
+  header .row{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:42px;height:42px;border:1.5px solid var(--ink);position:relative;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:16px;
+    flex:none;
+  }
+  .brand-mark::before,.brand-mark::after{
+    content:"";position:absolute;width:6px;height:6px;border:1px solid var(--brass-light);
+  }
+  .brand-mark::before{top:-4px;left:-4px;border-right:none;border-bottom:none;}
+  .brand-mark::after{bottom:-4px;right:-4px;border-left:none;border-top:none;}
+  .brand-name{font-family:'Fraunces',serif;font-size:19px;font-weight:600;line-height:1.1;}
+  .brand-sub{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;}
+
+  nav.primary{display:flex;align-items:center;gap:38px;}
+  nav.primary a{
+    font-size:14px;font-weight:600;position:relative;padding:4px 0;
+  }
+  nav.primary a:not(.btn)::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--walnut);
+    transition:width .3s var(--ease);
+  }
+  nav.primary a:not(.btn):hover::after{width:100%;}
+  .nav-links{display:flex;gap:34px;}
+  .menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle span{width:24px;height:2px;background:var(--ink);transition:transform .3s var(--ease), opacity .3s var(--ease);}
+
+  @media (max-width:900px){
+    .nav-links{
+      position:fixed;inset:0 0 0 30%;
+      background:var(--paper);
+      flex-direction:column;justify-content:center;align-items:flex-start;
+      gap:26px;padding:40px;
+      transform:translateX(100%);
+      transition:transform .45s var(--ease);
+      box-shadow:-10px 0 40px rgba(0,0,0,.15);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:22px;}
+    .menu-toggle{display:flex;}
+    nav.primary .btn-brass{display:none;}
+    .nav-links .btn-brass{display:inline-flex;margin-top:10px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:120px;padding-bottom:80px;
+    background:
+      linear-gradient(var(--stone),var(--stone)),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line) 39px, var(--line) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--line) 39px, var(--line) 40px);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 78% 30%, rgba(176,141,87,.16), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .container{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem, 4.6vw, 3.9rem);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--walnut);
+  }
+  .hero p.lead{
+    font-size:17.5px;color:var(--ink-soft);max-width:46ch;margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:46px;}
+  .hero-meta{
+    display:flex;gap:34px;flex-wrap:wrap;
+    padding-top:26px;border-top:1px solid var(--line-strong);
+  }
+  .hero-meta div{display:flex;flex-direction:column;gap:4px;}
+  .hero-meta .num{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--brass-light);}
+  .hero-meta .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+
+  /* Hero blueprint illustration */
+  .hero-art{position:relative;aspect-ratio:1/1;}
+  .hero-art svg{width:100%;height:100%;overflow:visible;}
+  .blueprint-line{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.55;}
+  .blueprint-dim{fill:none;stroke:var(--brass-light);stroke-width:.8;opacity:.75;}
+  .blueprint-dim-text{font-family:'JetBrains Mono',monospace;font-size:8px;fill:var(--brass-light);opacity:.8;}
+  .fill-layer{opacity:0;transform-origin:center;animation:blueprintFill 1.4s var(--ease) .5s forwards;}
+  .fill-layer.d2{animation-delay:.75s;}
+  .fill-layer.d3{animation-delay:1s;}
+  .fill-layer.d4{animation-delay:1.25s;}
+  @keyframes blueprintFill{
+    from{opacity:0;transform:scale(.9);}
+    to{opacity:1;transform:scale(1);}
+  }
+  .draw-line{stroke-dasharray:900;stroke-dashoffset:900;animation:drawIn 2.4s var(--ease) forwards;}
+  @keyframes drawIn{to{stroke-dashoffset:0;}}
+  .hero-art-frame{position:absolute;inset:-18px;border:1px solid var(--line-strong);pointer-events:none;}
+  .hero-art-frame::before,.hero-art-frame::after{
+    content:"";position:absolute;width:14px;height:14px;border:1.5px solid var(--brass-light);
+  }
+  .hero-art-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .hero-art-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .hero-art-caption{
+    position:absolute;bottom:-38px;left:0;right:0;
+    display:flex;justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase;
+  }
+
+  @media (max-width:900px){
+    .hero .container{grid-template-columns:1fr;}
+    .hero-art{max-width:420px;margin-inline:auto;order:-1;margin-bottom:20px;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{position:relative;padding:120px 0;}
+  section.tight{padding:90px 0;}
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .section-head h2{font-size:clamp(1.9rem,3.2vw,2.7rem);}
+  .section-head p{color:var(--ink-soft);font-size:16px;margin-top:16px;max-width:52ch;}
+  .paper{background:var(--paper);}
+  .ink{background:var(--stone-deep);color:var(--ink);}
+  .ink .eyebrow{color:var(--brass-light);}
+  .ink .eyebrow::before{background:var(--brass-light);}
+  .ink .section-head p{color:rgba(250,248,244,.68);}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-stagger .reveal:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger .reveal:nth-child(2){transition-delay:.15s;}
+  .reveal-stagger .reveal:nth-child(3){transition-delay:.25s;}
+  .reveal-stagger .reveal:nth-child(4){transition-delay:.35s;}
+
+  /* ---------- Why us cards ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .why-card{background:var(--paper);padding:42px 34px;position:relative;}
+  .why-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--brass-light);letter-spacing:.1em;margin-bottom:26px;display:block;}
+  .why-card h3{font-size:21px;margin-bottom:12px;font-weight:600;}
+  .why-card p{color:var(--ink-soft);font-size:15px;}
+  .why-icon{width:38px;height:38px;margin-bottom:22px;stroke:var(--brass-light);fill:none;stroke-width:1.3;}
+  @media (max-width:820px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center;}
+  .about-visual{
+    position:relative;aspect-ratio:4/5;
+    background:var(--stone-deep);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual svg{width:78%;height:78%;}
+  .about-visual .grid-tex{
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(250,248,244,.05) 29px, rgba(250,248,244,.05) 30px), repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(250,248,244,.05) 29px, rgba(250,248,244,.05) 30px);
+  }
+  .about-copy p{color:var(--ink-soft);margin-bottom:18px;max-width:56ch;}
+  .about-values{display:grid;grid-template-columns:1fr 1fr;gap:22px 30px;margin-top:34px;}
+  .about-values li{padding-top:14px;border-top:1px solid var(--line-strong);}
+  .about-values .v-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-light);display:block;margin-bottom:6px;}
+  .about-values .v-text{font-size:14.5px;color:var(--ink-soft);}
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr;} .about-values{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- Services ---------- */
+  .service-list{display:flex;flex-direction:column;}
+  .service-row{
+    display:grid;grid-template-columns:90px 1.3fr 1.7fr auto;gap:30px;align-items:center;
+    padding:36px 0;border-top:1px solid var(--line-strong);
+    transition:background .3s var(--ease);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line-strong);}
+  .service-row:hover{background:rgba(139,90,60,.05);}
+  .service-index{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--brass-light);}
+  .service-name h3{font-size:23px;font-weight:600;}
+  .service-name span{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase;margin-top:6px;}
+  .service-desc p{color:var(--ink-soft);font-size:14.5px;max-width:56ch;}
+  .service-cta{white-space:nowrap;}
+  @media (max-width:900px){
+    .service-row{grid-template-columns:1fr;gap:12px;padding:28px 0;}
+    .service-cta{justify-self:start;margin-top:8px;}
+  }
+
+  /* ---------- Process ---------- */
+  .process-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .process-track::before{
+    content:"";position:absolute;top:19px;left:0;right:0;height:1px;
+    background:repeating-linear-gradient(90deg, var(--line-strong) 0 8px, transparent 8px 14px);
+  }
+  .process-step{position:relative;padding-right:24px;}
+  .process-dot{
+    width:38px;height:38px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;
+    margin-bottom:26px;position:relative;z-index:2;
+  }
+  .process-step h4{font-size:18px;font-weight:600;margin-bottom:10px;}
+  .process-step p{font-size:14px;color:var(--ink-soft);max-width:30ch;}
+  @media (max-width:820px){
+    .process-track{grid-template-columns:1fr;gap:36px;}
+    .process-track::before{display:none;}
+  }
+
+  /* ---------- Stats ---------- */
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(250,248,244,.18);border-bottom:1px solid rgba(250,248,244,.18);}
+  .stat-item{padding:44px 24px;text-align:center;border-left:1px solid rgba(250,248,244,.18);}
+  .stat-item:first-child{border-left:none;}
+  .stat-num{font-family:'Fraunces',serif;font-size:clamp(2.1rem,4vw,3rem);font-weight:600;color:var(--brass-light);}
+  .stat-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,248,244,.65);margin-top:10px;}
+  @media (max-width:820px){.stats-bar{grid-template-columns:1fr 1fr;} .stat-item:nth-child(3){border-left:none;}}
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .portfolio-card{
+    position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--stone-deep);
+  }
+  .portfolio-card .swatch{position:absolute;inset:0;transition:transform .6s var(--ease);}
+  .portfolio-card:hover .swatch{transform:scale(1.06);}
+  .portfolio-card .p-info{
+    position:absolute;left:0;right:0;bottom:0;padding:24px;
+    background:linear-gradient(to top, rgba(9,9,8,.92), transparent);
+    color:var(--ink);
+  }
+  .portfolio-card .p-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-light);margin-bottom:6px;display:block;}
+  .portfolio-card h4{font-size:19px;font-weight:600;}
+  @media (max-width:900px){.portfolio-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .testi-card{background:var(--paper);padding:38px 32px;display:flex;flex-direction:column;}
+  .testi-quote{font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.55;color:var(--ink);margin-bottom:26px;}
+  .testi-who{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);}
+  .testi-name{font-weight:700;font-size:14.5px;}
+  .testi-role{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;}
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    position:relative;padding:110px 0;background:var(--walnut-deep);color:var(--ink);
+    text-align:center;overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(250,248,244,.06) 39px, rgba(250,248,244,.06) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(250,248,244,.06) 39px, rgba(250,248,244,.06) 40px);
+  }
+  .cta-banner .container{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+  .cta-banner h2{font-size:clamp(2rem,4vw,3.1rem);max-width:16ch;margin-bottom:20px;}
+  .cta-banner p{max-width:52ch;color:rgba(250,248,244,.78);margin-bottom:38px;font-size:16.5px;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  .contact-info dl{margin-top:30px;}
+  .contact-info .c-block{padding:22px 0;border-top:1px solid var(--line-strong);}
+  .contact-info .c-block:last-child{border-bottom:1px solid var(--line-strong);}
+  .c-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--brass-light);margin-bottom:8px;}
+  .c-val{font-size:16.5px;font-weight:600;}
+  .c-val a:hover{color:var(--brass-light);}
+  .map-frame{margin-top:30px;border:1px solid var(--line-strong);height:220px;overflow:hidden;filter:grayscale(.25) contrast(1.05);}
+  .map-frame iframe{width:100%;height:100%;border:0;}
+
+  .form-card{background:var(--paper);border:1px solid var(--line-strong);padding:40px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:9px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 14px;background:var(--stone);border:1px solid var(--line-strong);
+    font-family:'Manrope',sans-serif;font-size:14.5px;color:var(--ink);border-radius:var(--radius);
+    transition:border-color .3s var(--ease), background .3s var(--ease);
+  }
+  .field textarea{resize:vertical;min-height:100px;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brass-light);background:var(--paper);}
+  .field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--brass-light);outline-offset:1px;}
+  .form-card .btn{width:100%;justify-content:center;}
+  .form-note{font-size:12.5px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;} .form-card{padding:28px;}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--stone-deep);color:rgba(234,231,224,.6);padding:70px 0 30px;}
+  .footer-top{display:grid;grid-template-columns:1.4fr .8fr .8fr 1fr;gap:50px;padding-bottom:54px;border-bottom:1px solid rgba(250,248,244,.14);}
+  .footer-brand .brand-name{color:var(--ink);}
+  .footer-brand p{margin-top:16px;max-width:34ch;font-size:14px;color:rgba(250,248,244,.6);}
+  footer h5{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--brass-light);margin-bottom:20px;}
+  footer .flinks li{margin-bottom:12px;font-size:14px;}
+  footer .flinks a:hover{color:var(--ink);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12.5px;flex-wrap:wrap;gap:14px;}
+  @media (max-width:820px){.footer-top{grid-template-columns:1fr 1fr;row-gap:40px;}}
+
+  ::selection{background:var(--brass);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--brass-light);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="container row">
+    <a href="#home" class="brand">
+      <span class="brand-mark">S</span>
+      <span>
+        <span class="brand-name">PT. SBS</span><br>
+        <span class="brand-sub">Sukses Bersama Sendy</span>
+      </span>
+    </a>
+    <nav class="primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#portofolio">Portofolio</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a class="btn btn-brass" href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20proyek." target="_blank" rel="noopener">Konsultasi Gratis</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="tick">PT. Sukses Bersama Sendy — Bekasi, Jawa Barat</span></div>
+      <h1>Ruang yang <em>direncanakan</em> dengan presisi, dibangun dengan hati.</h1>
+      <p class="lead">SBS menerjemahkan blueprint menjadi ruang nyata — desain arsitektur &amp; interior, konstruksi, renovasi, hingga landscape taman, dikerjakan oleh tim yang menjaga detail dari gambar teknis sampai serah terima kunci.</p>
+      <div class="hero-actions">
+        <a href="#portofolio" class="btn btn-solid">Lihat Portofolio</a>
+        <a href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20proyek." target="_blank" rel="noopener" class="btn btn-ghost">
+          Konsultasi via WhatsApp
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.2-.2-.5-.3z"/><path fill="currentColor" d="M12 2C6.5 2 2 6.4 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.5 21.6 10.2 22 12 22c5.5 0 10-4.4 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div><span class="num">150+</span><span class="lbl">Proyek Selesai</span></div>
+        <div><span class="num">25+</span><span class="lbl">Tim Profesional</span></div>
+        <div><span class="num">98%</span><span class="lbl">Klien Puas</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="hero-art-frame"></div>
+      <svg viewBox="0 0 480 480" aria-hidden="true">
+        <!-- room outline -->
+        <rect class="blueprint-line draw-line" x="60" y="60" width="360" height="360"></rect>
+        <!-- dimension lines -->
+        <line class="blueprint-dim" x1="60" y1="40" x2="420" y2="40"></line>
+        <line class="blueprint-dim" x1="60" y1="34" x2="60" y2="46"></line>
+        <line class="blueprint-dim" x1="420" y1="34" x2="420" y2="46"></line>
+        <text class="blueprint-dim-text" x="220" y="32">4200 MM</text>
+
+        <line class="blueprint-dim" x1="40" y1="60" x2="40" y2="420"></line>
+        <line class="blueprint-dim" x1="34" y1="60" x2="46" y2="60"></line>
+        <line class="blueprint-dim" x1="34" y1="420" x2="46" y2="420"></line>
+        <text class="blueprint-dim-text" x="8" y="245" transform="rotate(-90 8 245)">3600 MM</text>
+
+        <!-- sofa -->
+        <g class="fill-layer d2">
+          <rect x="90" y="270" width="150" height="60" rx="6" fill="var(--walnut)" opacity=".85"></rect>
+          <rect x="90" y="256" width="150" height="20" rx="6" fill="var(--walnut-deep)" opacity=".9"></rect>
+        </g>
+        <rect class="blueprint-line" x="90" y="256" width="150" height="74" rx="6"></rect>
+
+        <!-- coffee table -->
+        <g class="fill-layer d3">
+          <ellipse cx="165" cy="215" rx="42" ry="22" fill="var(--brass)" opacity=".8"></ellipse>
+        </g>
+        <ellipse class="blueprint-line" cx="165" cy="215" rx="42" ry="22"></ellipse>
+
+        <!-- rug -->
+        <rect class="blueprint-line" x="80" y="180" width="180" height="160" rx="4" stroke-dasharray="4 5"></rect>
+
+        <!-- plant -->
+        <g class="fill-layer d4">
+          <circle cx="345" cy="330" r="16" fill="var(--moss)" opacity=".85"></circle>
+          <circle cx="330" cy="316" r="12" fill="var(--moss)" opacity=".7"></circle>
+          <circle cx="360" cy="314" r="13" fill="var(--moss)" opacity=".75"></circle>
+        </g>
+        <rect class="blueprint-line" x="333" y="336" width="24" height="20"></rect>
+
+        <!-- window -->
+        <line class="blueprint-line" x1="60" y1="150" x2="60" y2="230"></line>
+        <line class="blueprint-line" x1="52" y1="150" x2="52" y2="230"></line>
+
+        <!-- door swing -->
+        <path class="blueprint-line" d="M420 340 A60 60 0 0 1 360 400" stroke-dasharray="3 4"></path>
+        <line class="blueprint-line" x1="420" y1="340" x2="420" y2="400"></line>
+      </svg>
+      <div class="hero-art-caption">
+        <span>DENAH · SKALA 1:50</span>
+        <span>SBS-INT-001</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section class="paper tight" id="mengapa">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Mengapa SBS</div>
+      <h2>Presisi teknis, rasa yang manusiawi.</h2>
+      <p>Kami menggabungkan disiplin gambar teknis dengan kepekaan desain interior, supaya setiap ruang bukan cuma kuat secara struktur — tapi juga terasa seperti rumah.</p>
+    </div>
+    <div class="why-grid reveal-stagger">
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 24 24"><path d="M4 20l6-16 4 10 3-6 3 12" stroke-linejoin="round"/></svg>
+        <span class="why-num">01</span>
+        <h3>Pengalaman &amp; Keahlian</h3>
+        <p>Tim profesional yang kompeten menangani berbagai skala proyek, dari hunian pribadi hingga bangunan komersial.</p>
+      </div>
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        <span class="why-num">02</span>
+        <h3>Kualitas &amp; Inovasi</h3>
+        <p>Desain kreatif, fungsional, dan efisien jadi prioritas dalam setiap rancangan yang kami kerjakan.</p>
+      </div>
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>
+        <span class="why-num">03</span>
+        <h3>Komitmen &amp; Transparansi</h3>
+        <p>Anggaran dan jadwal disampaikan terbuka sejak awal konsultasi, tanpa kejutan di tengah proyek.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="tentang">
+  <div class="container about-grid">
+    <div class="about-visual reveal">
+      <div class="grid-tex"></div>
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <g fill="none" stroke="var(--brass-light)" stroke-width="1" opacity=".9">
+          <rect x="30" y="30" width="140" height="140"></rect>
+          <line x1="30" y1="100" x2="170" y2="100"></line>
+          <line x1="100" y1="30" x2="100" y2="170"></line>
+          <circle cx="65" cy="65" r="18" fill="var(--brass)" opacity=".7" stroke="none"></circle>
+          <rect x="105" y="45" width="45" height="35" fill="var(--walnut)" opacity=".75" stroke="none"></rect>
+          <rect x="40" y="115" width="60" height="40" fill="var(--moss)" opacity=".75" stroke="none"></rect>
+        </g>
+      </svg>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow reveal">Tentang Kami</div>
+      <h2 class="reveal">PT. Sukses Bersama Sendy</h2>
+      <p class="reveal">Kami adalah perusahaan konsultan arsitektur, interior, dan konstruksi yang berbasis di Bekasi, Jawa Barat. Didukung tim profesional dengan pengalaman luas, kami merancang dan membangun berbagai jenis proyek — dari desain arsitektur yang kreatif hingga manajemen konstruksi yang efisien.</p>
+      <p class="reveal">Setiap proyek berangkat dari gambar teknis yang akurat, lalu diwujudkan melalui pelaksanaan lapangan yang terukur — supaya visi dan kebutuhan ruang Anda benar-benar tercapai, sesuai anggaran dan tepat waktu.</p>
+      <ul class="about-values reveal">
+        <li><span class="v-label">Cakupan</span><span class="v-text">Hunian, villa, ruko &amp; komersial</span></li>
+        <li><span class="v-label">Basis</span><span class="v-text">Jatiasih, Kota Bekasi</span></li>
+        <li><span class="v-label">Layanan</span><span class="v-text">Desain hingga serah terima</span></li>
+        <li><span class="v-label">Prinsip</span><span class="v-text">Transparan &amp; tepat waktu</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="paper" id="layanan">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Layanan Kami</div>
+      <h2>Dari gambar teknis sampai ruang jadi.</h2>
+      <p>Empat layanan inti yang saling terhubung — pilih satu titik masuk, atau serahkan seluruh proses kepada kami.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row reveal">
+        <span class="service-index">01</span>
+        <div class="service-name"><h3>Desain Arsitektur 2D &amp; 3D</h3><span>Perencanaan &amp; visualisasi</span></div>
+        <div class="service-desc"><p>Memvisualisasikan bentuk bangunan sejak awal dan menyesuaikannya dengan anggaran Anda. Rancangan diproyeksikan ke gambar 2D &amp; 3D yang bisa disesuaikan dengan selera dan kebutuhan.</p></div>
+        <a class="btn btn-ghost service-cta" href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20Desain%20Arsitektur%202D%2F3D." target="_blank" rel="noopener">Konsultasi</a>
+      </div>
+      <div class="service-row reveal">
+        <span class="service-index">02</span>
+        <div class="service-name"><h3>Bangunan Baru</h3><span>Konstruksi dari nol</span></div>
+        <div class="service-desc"><p>Pelaksanaan konstruksi kami lakukan secara optimal hingga bangunan berdiri kokoh sesuai harapan — mencakup rumah tinggal, villa, ruko, dan bangunan komersial lainnya.</p></div>
+        <a class="btn btn-ghost service-cta" href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20Bangunan%20Baru." target="_blank" rel="noopener">Konsultasi</a>
+      </div>
+      <div class="service-row reveal">
+        <span class="service-index">03</span>
+        <div class="service-name"><h3>Renovasi</h3><span>Perbaikan &amp; peningkatan</span></div>
+        <div class="service-desc"><p>Mengubah dan meningkatkan fungsi ruang lama tanpa mengorbankan struktur yang sudah ada — cocok untuk hunian maupun ruang usaha yang butuh tampilan dan fungsi baru.</p></div>
+        <a class="btn btn-ghost service-cta" href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20Renovasi." target="_blank" rel="noopener">Konsultasi</a>
+      </div>
+      <div class="service-row reveal">
+        <span class="service-index">04</span>
+        <div class="service-name"><h3>Landscape Taman</h3><span>Ruang luar &amp; hijau</span></div>
+        <div class="service-desc"><p>Perencanaan, penempatan, dan konstruksi taman yang ditata dengan benar sehingga menghasilkan tampilan yang cantik sekaligus fungsional untuk keseharian Anda.</p></div>
+        <a class="btn btn-ghost service-cta" href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20Landscape%20Taman." target="_blank" rel="noopener">Konsultasi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="proses">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Alur Kerja</div>
+      <h2>Empat tahap, satu tujuan yang jelas.</h2>
+      <p>Setiap proyek berjalan lewat urutan yang sama — supaya Anda selalu tahu di tahap mana proyek berada.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step reveal"><div class="process-dot">01</div><h4>Konsultasi Awal</h4><p>Diskusi kebutuhan, lokasi, dan anggaran bersama tim kami — gratis, tanpa komitmen.</p></div>
+      <div class="process-step reveal"><div class="process-dot">02</div><h4>Desain &amp; Perencanaan</h4><p>Penyusunan gambar 2D/3D dan rencana anggaran biaya yang bisa Anda tinjau bersama.</p></div>
+      <div class="process-step reveal"><div class="process-dot">03</div><h4>Proses Konstruksi</h4><p>Pelaksanaan di lapangan dengan pengawasan berkala dan laporan progres berkala.</p></div>
+      <div class="process-step reveal"><div class="process-dot">04</div><h4>Serah Terima</h4><p>Pemeriksaan akhir bersama klien, serah terima kunci, dan masa garansi pekerjaan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="ink tight" id="statistik">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-num" data-count="150" data-suffix="+">0</div><div class="stat-lbl">Proyek Selesai</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="25" data-suffix="+">0</div><div class="stat-lbl">Tim Profesional</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="98" data-suffix="%">0</div><div class="stat-lbl">Klien Puas</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="200" data-suffix="+">0</div><div class="stat-lbl">Klien Kami</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="paper" id="portofolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Portofolio Kami</div>
+      <h2>Sebagian ruang yang sudah kami wujudkan.</h2>
+      <p>Contoh proyek dari beberapa layanan utama kami. Hubungi tim untuk melihat portofolio lengkap sesuai kategori yang Anda butuhkan.</p>
+    </div>
+    <div class="portfolio-grid reveal-stagger">
+      <div class="portfolio-card reveal">
+        <div class="swatch" style="background:linear-gradient(160deg,#8b5a3c,#3a2418);"></div>
+        <div class="p-info"><span class="p-tag">Interior · Ruang Tamu</span><h4>Rumah Tinggal, Jatiasih</h4></div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="swatch" style="background:linear-gradient(160deg,#454f3e,#1f241b);"></div>
+        <div class="p-info"><span class="p-tag">Landscape · Taman</span><h4>Villa, Puncak</h4></div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="swatch" style="background:linear-gradient(160deg,#b08d57,#5c4626);"></div>
+        <div class="p-info"><span class="p-tag">Bangunan Baru · Ruko</span><h4>Ruko 3 Lantai, Bekasi</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimoni">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Testimoni</div>
+      <h2>Apa kata klien tentang kami.</h2>
+    </div>
+    <div class="testi-grid reveal-stagger">
+      <div class="testi-card reveal">
+        <p class="testi-quote">"Tim SBS mendengarkan setiap detail keinginan kami dan berhasil mewujudkannya. Prosesnya tepat waktu dan hasilnya sangat memuaskan."</p>
+        <div class="testi-who"><div class="testi-name">Rini Setiawan</div><div class="testi-role">Pemilik Rumah Pribadi</div></div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-quote">"Dari konsultasi awal hingga penyelesaian, semuanya berjalan profesional. Hasil akhir proyek perumahan kami sangat berkualitas."</p>
+        <div class="testi-who"><div class="testi-name">Hendra Pratama</div><div class="testi-role">Pengusaha Kontraktor</div></div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-quote">"Manajemen proyeknya rapi — selalu mengedepankan transparansi dan komunikasi. Proyek gedung kantor kami selesai tepat waktu."</p>
+        <div class="testi-who"><div class="testi-name">Dea Anggraini</div><div class="testi-role">Pengusaha</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;color:var(--brass-light);"><span class="tick">Mulai Proyek Anda</span></div>
+    <h2>Transformasi ruang yang membawa perubahan.</h2>
+    <p>Ingin mengubah tampilan rumah, kantor, atau ruang usaha Anda? Tim SBS siap membantu dengan solusi desain yang inovatif dan personal.</p>
+    <a href="https://api.whatsapp.com/send?phone=6285891629085&text=Halo%20SBS%2C%20saya%20ingin%20konsultasi%20proyek." target="_blank" rel="noopener" class="btn btn-brass">Jadwalkan Konsultasi Gratis</a>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="paper" id="kontak">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Hubungi Kami</div>
+      <h2>Ceritakan rencana ruang Anda.</h2>
+      <p>Isi formulir di bawah, atau langsung sapa kami lewat WhatsApp — tim biasanya merespons dalam satu hari kerja.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="c-block">
+          <div class="c-label">Alamat</div>
+          <div class="c-val">Jl. Jati Kramat Baru, Jatikramat, Kec. Jatiasih, Kota Bekasi, Jawa Barat 17421</div>
+        </div>
+        <div class="c-block">
+          <div class="c-label">WhatsApp / Telepon</div>
+          <div class="c-val"><a href="https://api.whatsapp.com/send?phone=6285891629085" target="_blank" rel="noopener">+62 858-9162-9085</a></div>
+        </div>
+        <div class="c-block">
+          <div class="c-label">Jam Operasional</div>
+          <div class="c-val">Senin – Sabtu, 08.00 – 17.00 WIB</div>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.9309866626572!2d106.93927697573187!3d-6.2728055614075755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698d6b3230c0c9%3A0xdc922eeebaacda1!2sJl.%20Jati%20Kramat%20Baru%2C%20Jatikramat%2C%20Kec.%20Jatiasih%2C%20Kota%20Bks%2C%20Jawa%20Barat%2017421!5e0!3m2!1sid!2sid!4v1727339991416!5m2!1sid!2sid" loading="lazy" title="Lokasi PT. SBS" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="contactForm">
+        <div class="field">
+          <label for="f-name">Nama Lengkap</label>
+          <input type="text" id="f-name" name="name" required placeholder="Nama Anda">
+        </div>
+        <div class="field">
+          <label for="f-phone">No. WhatsApp</label>
+          <input type="tel" id="f-phone" name="phone" required placeholder="08xx xxxx xxxx">
+        </div>
+        <div class="field">
+          <label for="f-service">Layanan yang Diminati</label>
+          <select id="f-service" name="service">
+            <option>Desain Arsitektur 2D &amp; 3D</option>
+            <option>Bangunan Baru</option>
+            <option>Renovasi</option>
+            <option>Landscape Taman</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-message">Ceritakan Kebutuhan Anda</label>
+          <textarea id="f-message" name="message" placeholder="Lokasi, luas ruang, target waktu, dsb."></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid" id="formSubmitBtn">Kirim &amp; Lanjut ke WhatsApp</button>
+        <p class="form-note" id="formNote">Data akan tersimpan otomatis ke spreadsheet kami, lalu WhatsApp terbuka dengan pesan yang sudah terisi.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name">PT. SBS</span>
+        <p>PT. Sukses Bersama Sendy — konsultan arsitektur, interior, dan konstruksi berbasis di Bekasi, Jawa Barat.</p>
+      </div>
+      <div>
+        <h5>Navigasi</h5>
+        <ul class="flinks">
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#portofolio">Portofolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Layanan</h5>
+        <ul class="flinks">
+          <li><a href="#layanan">Desain 2D &amp; 3D</a></li>
+          <li><a href="#layanan">Bangunan Baru</a></li>
+          <li><a href="#layanan">Renovasi</a></li>
+          <li><a href="#layanan">Landscape Taman</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Kontak</h5>
+        <ul class="flinks">
+          <li>Jl. Jati Kramat Baru, Jatikramat, Kec. Jatiasih, Kota Bekasi, Jawa Barat 17421</li>
+          <li><a href="https://api.whatsapp.com/send?phone=6285891629085" target="_blank" rel="noopener">+62 858-9162-9085</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PT. Sukses Bersama Sendy. Seluruh hak cipta dilindungi.</span>
+      <span class="mono">DIRANCANG DENGAN PRESISI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header shrink on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive:true });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Counter animation
+  const counters = document.querySelectorAll('.stat-num');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => counterIO.observe(el));
+
+  // ============================================================
+  // GOOGLE SHEETS INTEGRATION
+  // Ganti URL di bawah ini dengan URL Web App hasil deploy
+  // Google Apps Script Anda (lihat panduan yang menyertai file ini).
+  // ============================================================
+  https://script.google.com/macros/s/AKfycbzH-t5HDlm44gKjOEfCzSOi8KIzR6gPHwkTtYIxKPon6hIlcX95BUrB26yHICxGeGeo/exec
+
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('formSubmitBtn');
+  const formNote = document.getElementById('formNote');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const service = document.getElementById('f-service').value;
+    const message = document.getElementById('f-message').value.trim();
+
+    if (!name || !phone) return;
+
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Menyimpan...';
+    formNote.textContent = 'Menyimpan data Anda...';
+
+    const isEndpointConfigured = SHEET_ENDPOINT_URL && SHEET_ENDPOINT_URL.startsWith('http');
+
+    try {
+      if (isEndpointConfigured) {
+        const payload = new URLSearchParams({
+          timestamp: new Date().toLocaleString('id-ID'),
+          name, phone, service, message
+        });
+        // Apps Script Web App tidak mengirim header CORS,
+        // jadi kita pakai mode 'no-cors' (respons tidak bisa dibaca,
+        // tapi datanya tetap masuk & tersimpan di spreadsheet).
+        await fetch(SHEET_ENDPOINT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: payload
+        });
+        formNote.textContent = 'Tersimpan. Membuka WhatsApp...';
+      } else {
+        formNote.textContent = 'Membuka WhatsApp... (belum terhubung ke spreadsheet)';
+      }
+    } catch (err) {
+      formNote.textContent = 'Gagal menyimpan ke spreadsheet, tapi tetap melanjutkan ke WhatsApp.';
+    }
+
+    const text = `Halo SBS, perkenalkan saya ${name} (${phone}).%0ASaya tertarik dengan layanan: ${service}.%0A%0A${message}`;
+    window.open(`https://api.whatsapp.com/send?phone=6285891629085&text=${encodeURIComponent(text).replace(/%250A/g,'%0A')}`, '_blank');
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+    form.reset();
+    setTimeout(() => {
+      formNote.textContent = 'Data akan tersimpan otomatis ke spreadsheet kami, lalu WhatsApp terbuka dengan pesan yang sudah terisi.';
+    }, 4000);
+  });
+</script>
+</body>
+</html>
