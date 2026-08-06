@@ -833,8 +833,6 @@
 
   // ============================================================
   // GOOGLE SHEETS INTEGRATION
-  // Ganti URL di bawah ini dengan URL Web App hasil deploy
-  // Google Apps Script Anda (lihat panduan yang menyertai file ini).
   // ============================================================
   const SHEET_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbzH-t5HDlm44gKjOEfCzSOi8KIzR6gPHwkTtYIxKPon6hIlcX95BUrB26yHICxGeGeo/exec";
 
@@ -851,10 +849,16 @@
 
     if (!name || !phone) return;
 
+    // Siapkan link WhatsApp dan BUKA LANGSUNG saat ini juga (sebelum ada
+    // proses async apapun) supaya tidak diblokir oleh popup blocker browser.
+    const text = `Halo SBS, perkenalkan saya ${name} (${phone}).%0ASaya tertarik dengan layanan: ${service}.%0A%0A${message}`;
+    const waUrl = `https://api.whatsapp.com/send?phone=6285891629085&text=${encodeURIComponent(text).replace(/%250A/g,'%0A')}`;
+    window.open(waUrl, '_blank');
+
     const originalLabel = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Menyimpan...';
-    formNote.textContent = 'Menyimpan data Anda...';
+    formNote.textContent = 'WhatsApp sudah terbuka. Menyimpan data Anda...';
 
     const isEndpointConfigured = SHEET_ENDPOINT_URL && SHEET_ENDPOINT_URL.startsWith('http');
 
@@ -872,16 +876,13 @@
           mode: 'no-cors',
           body: payload
         });
-        formNote.textContent = 'Tersimpan. Membuka WhatsApp...';
+        formNote.textContent = 'Tersimpan. WhatsApp sudah terbuka di tab baru.';
       } else {
-        formNote.textContent = 'Membuka WhatsApp... (belum terhubung ke spreadsheet)';
+        formNote.textContent = 'WhatsApp sudah terbuka di tab baru. (belum terhubung ke spreadsheet)';
       }
     } catch (err) {
-      formNote.textContent = 'Gagal menyimpan ke spreadsheet, tapi tetap melanjutkan ke WhatsApp.';
+      formNote.textContent = 'Gagal menyimpan ke spreadsheet, tapi WhatsApp sudah terbuka.';
     }
-
-    const text = `Halo SBS, perkenalkan saya ${name} (${phone}).%0ASaya tertarik dengan layanan: ${service}.%0A%0A${message}`;
-    window.open(`https://api.whatsapp.com/send?phone=6285891629085&text=${encodeURIComponent(text).replace(/%250A/g,'%0A')}`, '_blank');
 
     submitBtn.disabled = false;
     submitBtn.textContent = originalLabel;
